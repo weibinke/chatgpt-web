@@ -9,6 +9,7 @@ interface ConfigState {
   timeoutMs?: number
   reverseProxy?: string
   apiModel?: string
+  model?: string
   socksProxy?: string
   httpsProxy?: string
   balance?: string
@@ -61,6 +62,7 @@ onMounted(() => {
         </p>
       </div>
       <p>{{ $t("setting.api") }}：{{ config?.apiModel ?? '-' }}</p>
+      <p>{{ $t("setting.model") }}：{{ config?.model ?? '-' }}</p>
       <p v-if="isChatGPTAPI">
         {{ $t("setting.balance") }}：{{ config?.balance ?? '-' }}
         <span class="text-xs text-neutral-400">({{ $t('setting.monthlyUsage') }})</span>

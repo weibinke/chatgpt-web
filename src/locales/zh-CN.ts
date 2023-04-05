@@ -64,6 +64,7 @@ export default {
     theme: '主题',
     language: '语言',
     api: 'API',
+    model: 'Model',
     reverseProxy: '反向代理',
     timeout: '超时',
     socks: 'Socks',

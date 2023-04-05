@@ -171,6 +171,9 @@ function formatDate(): string[] {
 
 async function chatConfig() {
   const balance = await fetchBalance()
+  const OPENAI_API_MODEL = process.env.OPENAI_API_MODEL
+  const model = isNotEmptyString(OPENAI_API_MODEL) ? OPENAI_API_MODEL : 'gpt-3.5-turbo'
+
   const reverseProxy = process.env.API_REVERSE_PROXY ?? '-'
   const httpsProxy = (process.env.HTTPS_PROXY || process.env.ALL_PROXY) ?? '-'
   const socksProxy = (process.env.SOCKS_PROXY_HOST && process.env.SOCKS_PROXY_PORT)
@@ -178,7 +181,7 @@ async function chatConfig() {
     : '-'
   return sendResponse<ModelConfig>({
     type: 'Success',
-    data: { apiModel, reverseProxy, timeoutMs, socksProxy, httpsProxy, balance },
+    data: { apiModel, model, reverseProxy, timeoutMs, socksProxy, httpsProxy, balance },
   })
 }
 
